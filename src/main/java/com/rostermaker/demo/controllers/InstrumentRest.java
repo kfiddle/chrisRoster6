@@ -2,6 +2,7 @@ package com.rostermaker.demo.controllers;
 
 
 import com.rostermaker.demo.models.instrument.Instrument;
+import com.rostermaker.demo.models.instrument.Orch;
 import com.rostermaker.demo.repos.InstrumentRepo;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,11 @@ public class InstrumentRest {
         List<Instrument> allInsts = (List<Instrument>) instrumentRepo.findAll();
         Collections.sort(allInsts);
         return allInsts;
+    }
+
+    @RequestMapping("/get-orchestra")
+    public Orch getOrchestra() {
+        return new Orch(instrumentRepo);
     }
 
     @RequestMapping("/get-all-instruments-names")

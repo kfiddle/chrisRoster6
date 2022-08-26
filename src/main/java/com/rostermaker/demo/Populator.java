@@ -68,7 +68,7 @@ public class Populator implements CommandLineRunner {
         Player chrisNewlun = new PlayerBuilder().firstNameArea("Chris").lastName("Newlun").email("cn@Email").password(chrisPass).build();
         Player troy = new PlayerBuilder().firstNameArea("Troy").lastName("Harris").email("troyman7000@gmail.com").password(troyPass).build();
 
-        Instrument piccolo = new Instrument("Piccolo", "PIC", 10);
+        Instrument piccolo = new Instrument("PICCOLO", "PIC", 10);
         Instrument flute = new Instrument("FLUTE", "FL", 20);
         Instrument altoFlute = new Instrument("ALTO FLUTE", "AFL", 30);
         Instrument bassFlute = new Instrument("BASS FLUTE", "BFL", 31);

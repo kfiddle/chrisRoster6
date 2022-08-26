@@ -14,7 +14,6 @@ import java.util.Optional;
 @Service
 public class PartsListMaker {
 
-
     private final InstrumentRepo instrumentRepo;
 
     @Autowired
@@ -26,13 +25,15 @@ public class PartsListMaker {
         List<Part> partsToSet = new ArrayList<>();
 
         for (Part part : incomingParts) {
-//            Instrument inst;
-//            if (part.getInstrument().getName() != null) {
-//                inst = instrumentRepo.findByName(part.getInstrument().getName());
-//            } else {
-//                inst = instrumentRepo.findByAbbreviation(part.getInstrument().getAbbreviation());
-//            }
-            Instrument inst = instrumentRepo.findById(part.getInstrument().getId()).get();
+            Instrument inst;
+
+            if (part.getInstrument().getId() != null) {
+                inst = instrumentRepo.findById(part.getInstrument().getId()).get();
+            } else if (part.getInstrument().getName() != null) {
+                inst = instrumentRepo.findByName(part.getInstrument().getName());
+            } else {
+                inst = instrumentRepo.findByAbbreviation(part.getInstrument().getAbbreviation());
+            }
 
             Part partToAdd = new Part(inst);
             if (part.getRank() > 0) {
