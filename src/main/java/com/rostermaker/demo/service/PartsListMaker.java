@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PartsListMaker {
@@ -25,12 +26,13 @@ public class PartsListMaker {
         List<Part> partsToSet = new ArrayList<>();
 
         for (Part part : incomingParts) {
-            Instrument inst;
-            if (part.getInstrument().getName() != null) {
-                inst = instrumentRepo.findByName(part.getInstrument().getName());
-            } else {
-                inst = instrumentRepo.findByAbbreviation(part.getInstrument().getAbbreviation());
-            }
+//            Instrument inst;
+//            if (part.getInstrument().getName() != null) {
+//                inst = instrumentRepo.findByName(part.getInstrument().getName());
+//            } else {
+//                inst = instrumentRepo.findByAbbreviation(part.getInstrument().getAbbreviation());
+//            }
+            Instrument inst = instrumentRepo.findById(part.getInstrument().getId()).get();
 
             Part partToAdd = new Part(inst);
             if (part.getRank() > 0) {
