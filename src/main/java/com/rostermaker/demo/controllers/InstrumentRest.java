@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -26,6 +23,12 @@ public class InstrumentRest {
         List<Instrument> allInsts = (List<Instrument>) instrumentRepo.findAll();
         Collections.sort(allInsts);
         return allInsts;
+    }
+
+    @RequestMapping("/get-inst-by-name/{name}")
+    public Instrument getInstByName(@PathVariable String name) throws Exception {
+        Optional<Instrument> instToFind = Optional.ofNullable(instrumentRepo.findByName(name.toUpperCase(Locale.ROOT)));
+        return instToFind.orElse(null);
     }
 
     @RequestMapping("/get-orchestra")

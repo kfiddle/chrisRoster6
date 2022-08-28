@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class Orch {
 
     InstrumentRepo ir;
 
     private final List<Instrument> fluteDbs = new ArrayList<>();
+
+
     private final List<Instrument> oboeDbs = new ArrayList<>();
     private final List<Instrument> clarinetDbs = new ArrayList<>();
     private final List<Instrument> bassoonDbs = new ArrayList<>();
@@ -23,12 +26,11 @@ public class Orch {
     private final List<Instrument> tromboneDbs = new ArrayList<>();
     private final List<Instrument> tubaDbs = new ArrayList<>();
 
-
     public Instrument name(String name) {
         return ir.findByName(name);
     }
 
-    public void addAll(List<Instrument> list, String ...names) {
+    public void addAll(List<Instrument> list, String... names) {
         for (String n : names) {
             list.add(name(n));
         }
@@ -38,13 +40,14 @@ public class Orch {
         this.ir = ir;
 
         addAll(fluteDbs, "PICCOLO", "ALTO FLUTE", "BASS FLUTE", "FLUTE D'AMORE");
-        addAll(oboeDbs,"ENGLISH HORN","OBOE D'AMORE", "BASS OBOE" );
-        addAll(clarinetDbs,"BASS CLARINET", "SAX" );
+        addAll(oboeDbs, "ENGLISH HORN", "OBOE D'AMORE", "BASS OBOE");
+        addAll(clarinetDbs, "BASS CLARINET", "SAX");
         addAll(bassoonDbs, "CONTRA");
         addAll(hornDbs, "WAGNER TUBA");
-        addAll(trumpetDbs,"CORNET", "FLUGELHORN", "PICC TRUMPET" );
+        addAll(trumpetDbs, "CORNET", "FLUGELHORN", "PICC TRUMPET");
         addAll(tromboneDbs, "BASS TROMBONE");
         addAll(tubaDbs, "EUPHONIUM");
+
     }
 
     public List<Instrument> getFluteDbs() {
