@@ -6,6 +6,7 @@ import com.rostermaker.demo.legos.ShowPiece;
 import com.rostermaker.demo.legos.playerInChair.HornPICSorter;
 import com.rostermaker.demo.legos.playerInChair.PIC;
 import com.rostermaker.demo.legos.playerInChair.PICBuilder;
+import com.rostermaker.demo.models.part.Part;
 import com.rostermaker.demo.models.player.Player;
 import com.rostermaker.demo.models.show.Show;
 import com.rostermaker.demo.repos.*;
@@ -44,6 +45,14 @@ public class PICRest {
 
     @PostMapping("/add-pic")
     public PIC addPIC(@RequestBody PIC incomingPIC) throws IOException {
+
+        for (Part part : incomingPIC.getParts()) {
+            System.out.println(part.getInstrument().getName());
+            if (part.getInstrument().getAbbreviation() != null) {
+                System.out.println(part.getInstrument().getAbbreviation());
+            }
+        }
+
         try {
             PartsListMaker maker = new PartsListMaker(instrumentRepo);
             PIC picToAdd = new PICBuilder()
@@ -55,7 +64,8 @@ public class PICRest {
             return picToAdd;
         } catch (Exception error) {
             error.printStackTrace();
-        } return null;
+        }
+        return null;
     }
 
     @PostMapping("/delete-pic")

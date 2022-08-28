@@ -25,23 +25,23 @@ public class Instrument implements Comparable<Instrument> {
     }
 
     public Instrument(String name, int scoreOrder) {
-        this.name = name.toUpperCase();
+        this.name = name;
         this.scoreOrder = scoreOrder;
     }
 
     public Instrument(String name, String abbreviation, int scoreOrder) {
-        this.name = name.toUpperCase();
-        this.abbreviation = abbreviation.toUpperCase();
+        this.name = name;
+        this.abbreviation = abbreviation;
         this.scoreOrder = scoreOrder;
     }
 
     public Instrument(String name, String abbreviation) {
-        this.name = name.toUpperCase();
-        this.abbreviation = abbreviation.toUpperCase();
+        this.name = name;
+        this.abbreviation = abbreviation;
     }
 
     public void setName(String name) {
-        this.name = name.toUpperCase();
+        this.name = name;
     }
 
     public void setScoreOrder(int scoreOrder) {
@@ -49,8 +49,7 @@ public class Instrument implements Comparable<Instrument> {
     }
 
     public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation.toUpperCase();
-
+        this.abbreviation = abbreviation;
     }
 
     public Long getId() {
@@ -71,11 +70,17 @@ public class Instrument implements Comparable<Instrument> {
 
     @Override
     public int compareTo(Instrument next) {
-        if (scoreOrder > 0) {
+        if (this.scoreOrder != next.getScoreOrder()) {
             return Integer.compare(this.scoreOrder, next.getScoreOrder());
         } else {
-            return 1;
+            return 0;
         }
     }
 
+//        new Instrument("VIOLA", 360),
+//                new Instrument("PICCOLO", "PIC", 1),
+//                new Instrument("BASS", 380),
+//                new Instrument("CELLO", 370),
+//                new Instrument("KAZU", "KZU"),
+//                new Instrument("FLUTE", 10)
 }
