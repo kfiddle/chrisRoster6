@@ -62,10 +62,10 @@ public class Populator implements CommandLineRunner {
         String boutinePass = robot.encode("dbb@Email");
 
         String kenPass = robot.encode("KenPassword");
-        String chrisPass = robot.encode("ChrisPass");
+        String chrisPass = robot.encode("managerPass");
         String troyPass = robot.encode("rookfoot");
 
-        Player chrisNewlun = new PlayerBuilder().firstNameArea("Chris").lastName("Newlun").email("cn@Email").password(chrisPass).build();
+        Player chrisNewlun = new PlayerBuilder().firstNameArea("Orchestra").lastName("Manager").email("manager@Email").password(chrisPass).build();
         Player troy = new PlayerBuilder().firstNameArea("Troy").lastName("Harris").email("troyman7000@gmail.com").password(troyPass).build();
 
         Instrument piccolo = new Instrument("PICCOLO", "PIC", 10);
@@ -208,11 +208,11 @@ public class Populator implements CommandLineRunner {
         Show sym4 = new ShowBuilder().title("Sym 4").build();
         Show sym5 = new ShowBuilder().title("Sym 5").build();
 
-        Show pops1 = new ShowBuilder().title("Pops 1: Sheena Easton and Hits of the 80’s").build();
-        Show pops2 = new ShowBuilder().title("Pops 2: Star Wars Episode V: The Empire Strikes Back").build();
+        Show pops1 = new ShowBuilder().title("Pops 1: Sheena Easton").build();
+        Show pops2 = new ShowBuilder().title("Pops 2: Empire").build();
         Show pops3 = new ShowBuilder().title("Pops 3: Holiday Pops").build();
         Show pops4 = new ShowBuilder().title("Pops 4: Toy Story").build();
-        Show pops5 = new ShowBuilder().title("Pops 5: Cirque at the Symphony with Troupe Vertigo").build();
+        Show pops5 = new ShowBuilder().title("Pops 5: Cirque").build();
 
         showRepo.saveAll(Arrays.asList(sym1, sym2, sym3, sym4, sym5, pops1, pops2, pops3, pops4, pops5));
 
