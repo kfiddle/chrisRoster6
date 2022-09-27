@@ -1,9 +1,13 @@
 package com.rostermaker.demo.models.show;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.rostermaker.demo.enums.Event;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Collection;
+
 
 @Entity
 public class Show {
@@ -17,6 +21,7 @@ public class Show {
     private int numberOfServices;
 
     private String notes;
+
 
     public Show() {
     }

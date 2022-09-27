@@ -46,12 +46,6 @@ public class PICRest {
     @PostMapping("/add-pic")
     public PIC addPIC(@RequestBody PIC incomingPIC) throws IOException {
 
-        for (Part part : incomingPIC.getParts()) {
-            System.out.println(part.getInstrument().getName());
-            if (part.getInstrument().getAbbreviation() != null) {
-                System.out.println(part.getInstrument().getAbbreviation());
-            }
-        }
 
         try {
             PartsListMaker maker = new PartsListMaker(instrumentRepo);
