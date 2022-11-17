@@ -26,7 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PlayerDetailsService playerDetailsService;
 
-
     @Autowired
     private AuthenticationFilter authenticationFilter;
 

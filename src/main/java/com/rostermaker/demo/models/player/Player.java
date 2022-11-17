@@ -212,13 +212,17 @@ public class Player implements Comparable<Player> {
         return role;
     }
 
+//    public boolean couldSitHere(PIC pic) {
+//        for (Part part : pic.getParts()) {
+//            if (!instruments.contains(part.getInstrument())) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
     public boolean couldSitHere(PIC pic) {
-        for (Part part : pic.getParts()) {
-            if (!instruments.contains(part.getInstrument())) {
-                return false;
-            }
-        }
-        return true;
+        return instruments.contains(pic.getParts().get(0).getInstrument());
     }
 
 
