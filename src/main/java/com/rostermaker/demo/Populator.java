@@ -216,7 +216,7 @@ public class Populator implements CommandLineRunner {
 
         showRepo.saveAll(Arrays.asList(sym1, sym2, sym3, sym4, sym5, pops1, pops2, pops3, pops4, pops5));
 
-        Horloge sym1Hor = new HorlogeBuilder().date(LocalDate.of(2022, 10, 22)).startTime(LocalTime.of(8, 0)).show(sym1).event(Event.PRIMARYDATE).build();
+        Horloge sym1Hor = new HorlogeBuilder().date(LocalDate.of(2022, 10, 22)).startTime(LocalTime.of(8, 0)).show(sym1).event(Event.PRIMARYDATE).location("Warner").build();
         Horloge sym2Hor = new HorlogeBuilder().date(LocalDate.of(2022, 11, 12)).startTime(LocalTime.of(8, 0)).show(sym2).event(Event.PRIMARYDATE).build();
         Horloge sym3Hor = new HorlogeBuilder().date(LocalDate.of(2023, 1, 28)).startTime(LocalTime.of(8, 0)).show(sym3).event(Event.PRIMARYDATE).build();
         Horloge sym4Hor = new HorlogeBuilder().date(LocalDate.of(2023, 3, 25)).startTime(LocalTime.of(8, 0)).show(sym4).event(Event.PRIMARYDATE).build();

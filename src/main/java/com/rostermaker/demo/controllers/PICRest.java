@@ -99,6 +99,16 @@ public class PICRest {
         return null;
     }
 
+    // don't confuse these two, they are for different purposes!
+
+//    @RequestMapping("/get-full-show-roster")
+//    public Collection<PIC> getFullShowRoster(@RequestBody Show incomingShow) {
+//        Optional<Show> showToFind = showRepo.findById(incomingShow.getId());
+//        if (showToFind.isPresent()) {
+//
+//        }
+//    }
+
     @PostMapping("/put-player-in-pic/{picId}")
     public Optional<PIC> putAPlayerInAChair(@RequestBody Player incomingPlayer, @PathVariable Long
             picId) {

@@ -139,7 +139,7 @@ public class HorlogeRest {
 
 
     @PostMapping("/get-full-schedule-of-show")
-    public List<Horloge> getAllDatesOfShow(@RequestBody Show incoming) throws IOException {
+    public List<Horloge> getAllServicesOfShow(@RequestBody Show incoming) throws IOException {
         List<Horloge> datesToReturn = new ArrayList<>();
 
         try {
@@ -157,7 +157,5 @@ public class HorlogeRest {
             error.printStackTrace();
         }
         return null;
-
     }
-
 }
