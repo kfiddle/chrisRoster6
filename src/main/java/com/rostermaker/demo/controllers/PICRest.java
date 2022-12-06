@@ -114,9 +114,13 @@ public class PICRest {
                 Optional<ShowPiece> foundPiece = showPieceRepo.findById(showPiece.getId());
                 foundPiece.ifPresent(show -> totalPics.addAll(picRepo.findAllByShowPiece(foundPiece.get())));
             }
+            System.out.println("initial size is  " + totalPics.size());
 
             PICListParts checker = new PICListParts(totalPics);
             totalPics.removeIf(checker::containsParts);
+
+            System.out.println("after removal is  " + totalPics.size());
+
 
             Collections.sort(totalPics);
             HornPICSorter hornSorter = new HornPICSorter(totalPics);

@@ -20,6 +20,7 @@ public class PICListParts {
                 return false;
             }
             if (!listedPic.partsEquals(pic)) {
+//                System.out.println(pic.getPrimaryPart().getInstrument().getName());
                 return false;
             }
         }
