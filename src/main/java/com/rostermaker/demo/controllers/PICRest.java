@@ -81,8 +81,8 @@ public class PICRest {
         if (showPieceToFind.isPresent()) {
             List<PIC> picsToReturn = (List<PIC>) picRepo.findAllByShowPiece(showPieceToFind.get());
             Collections.sort(picsToReturn);
-            HornPICSorter sorter = new HornPICSorter(picsToReturn);
-            return sorter.sort();
+            HornPICSorter hornSorter = new HornPICSorter(picsToReturn);
+            return hornSorter.sort();
         }
         return null;
     }
@@ -93,21 +93,45 @@ public class PICRest {
         if (showToFind.isPresent()) {
             List<PIC> picsToReturn = (List<PIC>) picRepo.findAllByShow(showToFind.get());
             Collections.sort(picsToReturn);
-            HornPICSorter sorter = new HornPICSorter(picsToReturn);
-            return sorter.sort();
+            HornPICSorter hornSorter = new HornPICSorter(picsToReturn);
+            return hornSorter.sort();
         }
         return null;
     }
 
     // don't confuse these two, they are for different purposes!
 
-//    @RequestMapping("/get-full-show-roster")
-//    public Collection<PIC> getFullShowRoster(@RequestBody Show incomingShow) {
-//        Optional<Show> showToFind = showRepo.findById(incomingShow.getId());
-//        if (showToFind.isPresent()) {
-//
-//        }
-//    }
+    @RequestMapping("/get-full-roster")
+    public Collection<PIC> getFullShowRoster(@RequestBody Collection<ShowPiece> incomingShowPieces) throws IOException {
+        try {
+            List<PIC> picsToReturn = new ArrayList<>();
+
+            for (ShowPiece showPiece : incomingShowPieces) {
+                Optional<ShowPiece> foundPiece = showPieceRepo.findById(showPiece.getId());
+                foundPiece.ifPresent(show -> picsToReturn.addAll(picRepo.findAllByShowPiece(foundPiece.get())));
+            }
+
+            Collections.sort(picsToReturn);
+            HornPICSorter hornSorter = new HornPICSorter(picsToReturn);
+            return hornSorter.sort();
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return null;
+    }
+
+    @PostMapping("/sort-pics")
+    public Collection<PIC> sortGivenListOfPics(@RequestBody Collection<PIC> incomingPics) throws IOException {
+        try {
+            List<PIC> listedPics = new ArrayList<>(incomingPics);
+            Collections.sort(listedPics);
+            HornPICSorter hornSorter = new HornPICSorter(listedPics);
+            return hornSorter.sort();
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return null;
+    }
 
     @PostMapping("/put-player-in-pic/{picId}")
     public Optional<PIC> putAPlayerInAChair(@RequestBody Player incomingPlayer, @PathVariable Long
