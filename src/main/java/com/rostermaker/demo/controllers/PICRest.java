@@ -6,11 +6,13 @@ import com.rostermaker.demo.legos.ShowPiece;
 import com.rostermaker.demo.legos.playerInChair.HornPICSorter;
 import com.rostermaker.demo.legos.playerInChair.PIC;
 import com.rostermaker.demo.legos.playerInChair.PICBuilder;
+import com.rostermaker.demo.legos.playerInChair.PICListParts;
 import com.rostermaker.demo.models.part.Part;
 import com.rostermaker.demo.models.player.Player;
 import com.rostermaker.demo.models.show.Show;
 import com.rostermaker.demo.repos.*;
 import com.rostermaker.demo.service.PartsListMaker;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -103,16 +105,21 @@ public class PICRest {
 
     @RequestMapping("/get-full-roster")
     public Collection<PIC> getFullShowRoster(@RequestBody Collection<ShowPiece> incomingShowPieces) throws IOException {
+        // to return the necessary set, NOT every single PIC
+
         try {
-            List<PIC> picsToReturn = new ArrayList<>();
+            List<PIC> totalPics = new ArrayList<>();
 
             for (ShowPiece showPiece : incomingShowPieces) {
                 Optional<ShowPiece> foundPiece = showPieceRepo.findById(showPiece.getId());
-                foundPiece.ifPresent(show -> picsToReturn.addAll(picRepo.findAllByShowPiece(foundPiece.get())));
+                foundPiece.ifPresent(show -> totalPics.addAll(picRepo.findAllByShowPiece(foundPiece.get())));
             }
 
-            Collections.sort(picsToReturn);
-            HornPICSorter hornSorter = new HornPICSorter(picsToReturn);
+            PICListParts checker = new PICListParts(totalPics);
+            totalPics.removeIf(checker::containsParts);
+
+            Collections.sort(totalPics);
+            HornPICSorter hornSorter = new HornPICSorter(totalPics);
             return hornSorter.sort();
         } catch (Exception error) {
             error.printStackTrace();

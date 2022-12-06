@@ -74,5 +74,17 @@ public class Part implements Comparable<Part> {
     }
 
 
+    public boolean equals(Part next) {
+        if (specialDesignate != null && next.getSpecialDesignate() != null) {
+            return this.instrument.equals(next.getInstrument()) && this.getSpecialDesignate().equals(next
+                    .getSpecialDesignate());
+        } else if (specialDesignate != null || next.getSpecialDesignate() != null) {
+            return false;
+        }
+        return this.instrument.equals(next.getInstrument()) && rank == next.getRank();
+
+    }
+
+
 }
 

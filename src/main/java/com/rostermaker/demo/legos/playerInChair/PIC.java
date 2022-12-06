@@ -7,6 +7,7 @@ import com.rostermaker.demo.models.show.Show;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -99,6 +100,15 @@ public class PIC implements Comparable<PIC> {
     public boolean couldSitHere(Player player) {
         for (Part part : parts) {
             if (!player.getInstruments().contains(part.getInstrument())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean partsEquals(PIC pic) {
+        for (int j = 0; j < pic.getParts().size(); j++) {
+            if (!pic.getParts().get(j).equals(parts.get(j))) {
                 return false;
             }
         }
