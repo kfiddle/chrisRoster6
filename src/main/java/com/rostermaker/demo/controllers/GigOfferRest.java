@@ -118,7 +118,12 @@ public class GigOfferRest {
             if (showToFind.isPresent() && playerToFind.isPresent()) {
                 GigOffer offer = new GigOffer(showToFind.get(), playerToFind.get(), dateOffered);
                 gigOfferRepo.save(offer);
+                System.out.println(offer.getPlayer().getFirstNameArea());
+                System.out.println("will be playing on ...");
+                System.out.println(offer.getShow().getTitle());
+                System.out.println("offer was made on  " + dateOffered);
                 logEventRepo.save(new LogEvent(offer, LogType.MESSAGE_SENT, dateOffered));
+                return offer;
             }
         } catch (Exception error) {
             error.printStackTrace();
