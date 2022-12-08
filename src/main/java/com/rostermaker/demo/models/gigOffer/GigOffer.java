@@ -36,6 +36,11 @@ public class GigOffer {
         this.show = show;
     }
 
+    public GigOffer(Show show, Player player) {
+        this.show = show;
+        this.player = player;
+    }
+
     public GigOffer(Show show, LocalDate dateOffered) {
         this.show = show;
         this.dateOffered = dateOffered;

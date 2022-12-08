@@ -1,8 +1,10 @@
 package com.rostermaker.demo.controllers;
 
 import com.rostermaker.demo.enums.Event;
+import com.rostermaker.demo.enums.LogType;
 import com.rostermaker.demo.legos.playerInChair.PIC;
 import com.rostermaker.demo.models.gigOffer.GigOffer;
+import com.rostermaker.demo.models.logEvent.LogEvent;
 import com.rostermaker.demo.models.player.Player;
 import com.rostermaker.demo.models.show.Horloge;
 import com.rostermaker.demo.models.show.Show;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -105,18 +108,30 @@ public class GigOfferRest {
         return "nope";
     }
 
+    @PostMapping("/make-gig-offer")
+    public GigOffer makeAnOffer(@RequestBody GigOffer offerToMake) throws IOException {
+        try {
+            LocalDate dateOffered = LocalDate.now();
+            Optional<Show> showToFind = showRepo.findById(offerToMake.getShow().getId());
+            Optional<Player> playerToFind = playerRepo.findById(offerToMake.getPlayer().getId());
+
+            if (showToFind.isPresent() && playerToFind.isPresent()) {
+                GigOffer offer = new GigOffer(showToFind.get(), playerToFind.get(), dateOffered);
+                gigOfferRepo.save(offer);
+                logEventRepo.save(new LogEvent(offer, LogType.MESSAGE_SENT, dateOffered));
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return null;
+    }
+
     @PostMapping("/gig-offer-replies")
     public Collection<GigOffer> logPlayerPSAResponses(@RequestBody Collection<GigOffer> incomingAnswers) throws IOException {
         Collection<GigOffer> amendedOffers = new ArrayList<>();
         GigOfferReplyManager gigOfferReplyManager = new GigOfferReplyManager(gigOfferRepo, logEventRepo, picRepo, showPieceRepo);
 
         try {
-
-
-//            for (GigOffer offer : incomingAnswers) {
-//                Optional<GigOffer> offerToFind = gigOfferRepo.findById(offer.getId());
-//                offerToFind.ifPresent(gigOffer -> amendedOffers.add(gigOfferReplyManager.saveAndFillChairs(gigOffer, offer.getReply())));
-//            }
 
             incomingAnswers.forEach(gigOffer -> {
                 Optional<GigOffer> offerToFind = gigOfferRepo.findById(gigOffer.getId());

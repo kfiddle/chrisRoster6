@@ -1,11 +1,9 @@
 package com.rostermaker.demo.models.logEvent;
 
+import com.rostermaker.demo.enums.LogType;
 import com.rostermaker.demo.models.gigOffer.GigOffer;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -17,19 +15,32 @@ public class LogEvent {
 
     private LocalDate date;
 
+    @Enumerated
+    private LogType logType;
+
     @ManyToOne
     private GigOffer gigOffer;
 
     public LogEvent() {
     }
 
-    public LogEvent(GigOffer gigOffer, LocalDate date) {
+    public LogEvent(GigOffer gigOffer, LogType logType, LocalDate date) {
         this.gigOffer = gigOffer;
+        this.logType = logType;
+        this.date = date;
+    }
+
+    public LogEvent(LogType logType, LocalDate date) {
+        this.logType = logType;
         this.date = date;
     }
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void setLogType(LogType logType) {
+        this.logType = logType;
     }
 
     public void setGigOffer(GigOffer gigOffer) {
@@ -42,6 +53,10 @@ public class LogEvent {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public LogType getLogType() {
+        return logType;
     }
 
     public GigOffer getGigOffer() {

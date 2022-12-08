@@ -1,5 +1,6 @@
 package com.rostermaker.demo.service;
 
+import com.rostermaker.demo.enums.LogType;
 import com.rostermaker.demo.enums.Reply;
 import com.rostermaker.demo.legos.ShowPiece;
 import com.rostermaker.demo.legos.playerInChair.PIC;
@@ -72,7 +73,7 @@ public class GigOfferReplyManager {
             fillChair(previousOffer);
         }
 
-        LogEvent newEvent = new LogEvent(previousOffer, currentDate);
+        LogEvent newEvent = new LogEvent(previousOffer, LogType.REPLYMADE, currentDate);
         logEventRepo.save(newEvent);
 
         return previousOffer;
