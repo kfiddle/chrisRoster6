@@ -76,7 +76,7 @@ public class PieceRest {
         return (Collection<Piece>) pieceRepo.findAll();
     }
 
-    @RequestMapping("get-sorted-pieces/{sortType}")
+    @RequestMapping("/get-sorted-pieces/{sortType}")
     public Collection<Piece> getSortedPieces(@PathVariable String sortType) {
         try {
             return pieceRepo.findAllBy(Sort.by(sortType));

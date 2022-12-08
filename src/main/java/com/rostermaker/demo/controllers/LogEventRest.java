@@ -32,9 +32,11 @@ public class LogEventRest {
         return logEventRepo.findAllBy(Sort.by("date"));
     }
 
-    @RequestMapping("get-sorted-log-events/{sortType}")
+    @RequestMapping("/get-sorted-log-events/{sortType}")
     public Collection<LogEvent> getSortedLogEvents(@PathVariable String sortType) {
         try {
+
+
             return logEventRepo.findAllBy(Sort.by(sortType));
         } catch (
                 Exception error) {
@@ -45,22 +47,40 @@ public class LogEventRest {
 
     // these are redundant- testing for now
 
-    @RequestMapping("get-log-events-by/{sortType}")
+    @RequestMapping("/get-log-events-by/{sortType}")
     public List<LogEvent> getSortedPieces(@PathVariable String sortType) {
-        try {
-            if (sortType.equals("DATE")) {
-                return logEventRepo.findAllBy(Sort.by("date"));
-            } else if (sortType.equals("PLAYER")) {
+        List<LogEvent> logsToReturn = new ArrayList<>();
 
-                List<LogEvent> logsToReturn = new ArrayList<>();
-                for (GigOffer gigOffer : gigOfferRepo.findAllBy(Sort.by("player"))) {
-                    for (LogEvent logEvent : logEventRepo.findAll()) {
-                        if (logEvent.getGigOffer().equals(gigOffer)) {
-                            logsToReturn.add(logEvent);
+        try {
+            switch (sortType) {
+                case "date":
+                    return logEventRepo.findAllBy(Sort.by("date"));
+                case "player":
+
+//                List<LogEvent> logsToReturn = new ArrayList<>();
+                    for (GigOffer gigOffer : gigOfferRepo.findAllBy(Sort.by("player"))) {
+                        for (LogEvent logEvent : logEventRepo.findAll()) {
+                            if (logEvent.getGigOffer().equals(gigOffer)) {
+                                logsToReturn.add(logEvent);
+                            }
                         }
                     }
-                }
-                return logsToReturn;
+                    return logsToReturn;
+                case "show":
+                    //logEvent.gigOffer.show.title
+                    for (GigOffer gigOffer : gigOfferRepo.findAllBy(Sort.by("show"))) {
+                        for (LogEvent logEvent : logEventRepo.findAll()) {
+                            if (logEvent.getGigOffer().equals(gigOffer)) {
+                                logsToReturn.add(logEvent);
+                            }
+                        }
+                    }
+                    return logsToReturn;
+
+
+
+
+
             }
 //            return logEventRepo.findAll(Sort.by(Sort.Order.asc("date")));
         } catch (

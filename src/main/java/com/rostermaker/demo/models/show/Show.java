@@ -22,7 +22,6 @@ public class Show {
 
     private String notes;
 
-
     public Show() {
     }
 
