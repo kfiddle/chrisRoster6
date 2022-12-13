@@ -71,6 +71,7 @@ public class HorlogeRest {
                 .event(incoming.getEvent())
                 .startTime(incoming.getStartTime())
                 .endTime(incoming.getEndTime())
+                .location(incoming.getLocation())
                 .build();
         horlogeRepo.save(newOne);
         return newOne;

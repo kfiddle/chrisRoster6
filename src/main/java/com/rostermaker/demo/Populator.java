@@ -117,7 +117,6 @@ public class Populator implements CommandLineRunner {
                 viola, cello, bass));
 
 
-        Player weAnne = new PlayerBuilder().firstNameArea("Weanne").lastName("Wistrom").type(Type.CONTRACTED).rank(1).addAnInstrument(flute).password(leAnnePass).email("lw1@Email").build();
         Player leAnne = new PlayerBuilder().firstNameArea("Leanne").lastName("Wistrom").type(Type.CONTRACTED).rank(1).addAnInstrument(flute).password(leAnnePass).email("lw@Email").build();
         Player seanG = new PlayerBuilder().firstNameArea("Sean").lastName("Gabriel").type(Type.CONTRACTED).rank(2).addAnInstrument(flute).password(seanGPass).email("sg@Email").build();
         Player danna = new PlayerBuilder().firstNameArea("Danna").lastName("Sundet").type(Type.CONTRACTED).rank(1).addAnInstrument(oboe).password(dannaPass).email("ds@Email").build();
@@ -183,7 +182,7 @@ public class Populator implements CommandLineRunner {
         Player chrisBlaha = new Player(new PlayerBuilder().firstNameArea("Chris").lastName("Blaha").type(Type.SUB).rank(1).addAnInstrument(tuba).email("kenjfiddle@gmail.com"));
         Player erikSundet = new Player(new PlayerBuilder().firstNameArea("Erik").lastName("Sundet").type(Type.SUB).rank(1).addAnInstrument(trumpet).email("kenjfiddle@gmail.com"));
 
-        playerRepo.saveAll(Arrays.asList(chrisNewlun, troy, weAnne, leAnne, seanG, ami, sarahH, danna, heatherS, sarahH, benC, db, kdo, jenJ, jeffS, jiYoung, lk, lel, cr, ma, es, ba, bs, gd,
+        playerRepo.saveAll(Arrays.asList(chrisNewlun, troy, leAnne, seanG, ami, sarahH, danna, heatherS, sarahH, benC, db, kdo, jenJ, jeffS, jiYoung, lk, lel, cr, ma, es, ba, bs, gd,
                 da, mh, wc, sb, kh, bradA, ml, mr, kj, sls, jh, melissaH, ah, stefS, yk, mp, jc, sy, benS,
                 eriS, ee, jiYoung, cv, kf, hl, wt, tobias, jiyeonY, jenJ, mp, jc, jm, nadineS, bn, jv, kieranH, josephH, tomC, jamesM, mariaP, mikeChen, dianaV,
                 samPetrey, maijaAnstine, chrisBlaha, erikSundet));
