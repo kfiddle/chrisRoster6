@@ -36,7 +36,6 @@ public class LoginController {
 
         if (loggedInPlayer.isPresent()) {
             foundPlayer = loggedInPlayer.get();
-//            System.out.println(foundPlayer.getUsername() + "    " + foundPlayer.getPassword());
         }
 
         Authentication auth = authenticationManager.authenticate(credsToCheck);
