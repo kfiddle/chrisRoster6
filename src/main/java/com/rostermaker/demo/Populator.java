@@ -180,12 +180,12 @@ public class Populator implements CommandLineRunner {
         Player samPetrey = new Player(new PlayerBuilder().firstNameArea("Sam").lastName("Petrey").type(Type.SUB).rank(1).addAnInstrument(flute).email("kenjfiddle@gmail.com"));
         Player maijaAnstine = new Player(new PlayerBuilder().firstNameArea("Maija").lastName("Anstine").type(Type.SUB).rank(1).addAnInstrument(viola).email("kenjfiddle@gmail.com"));
         Player chrisBlaha = new Player(new PlayerBuilder().firstNameArea("Chris").lastName("Blaha").type(Type.SUB).rank(1).addAnInstrument(tuba).email("kenjfiddle@gmail.com"));
-        Player erikSundet = new Player(new PlayerBuilder().firstNameArea("Erik").lastName("Sundet").type(Type.SUB).rank(1).addAnInstrument(trumpet).email("kenjfiddle@gmail.com"));
+        Player erikSundt = new Player(new PlayerBuilder().firstNameArea("Erik").lastName("Sundet").type(Type.SUB).rank(1).addAnInstrument(trumpet).email("kenjfiddle@gmail.com"));
 
         playerRepo.saveAll(Arrays.asList(chrisNewlun, troy, leAnne, seanG, ami, sarahH, danna, heatherS, sarahH, benC, db, kdo, jenJ, jeffS, jiYoung, lk, lel, cr, ma, es, ba, bs, gd,
                 da, mh, wc, sb, kh, bradA, ml, mr, kj, sls, jh, melissaH, ah, stefS, yk, mp, jc, sy, benS,
                 eriS, ee, jiYoung, cv, kf, hl, wt, tobias, jiyeonY, jenJ, mp, jc, jm, nadineS, bn, jv, kieranH, josephH, tomC, jamesM, mariaP, mikeChen, dianaV,
-                samPetrey, maijaAnstine, chrisBlaha, erikSundet));
+                samPetrey, maijaAnstine, chrisBlaha, erikSundt));
 
         pieceRepo.saveAll(Arrays.asList(new PieceBuilder().composerName("Beethoven").title("Symphony 9").duration("65:00").build(),
                 new PieceBuilder().composerName("Sigfúsdóttir").title("Oceans").duration("9:30").build(),
