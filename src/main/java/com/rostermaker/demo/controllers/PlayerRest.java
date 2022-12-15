@@ -122,5 +122,18 @@ public class PlayerRest {
         return (Collection<Player>) playerRepo.findAll();
     }
 
+    @PostMapping("/delete-player")
+    public String deletePlayerFromDB(@RequestBody Player incomingPlayer) throws IOException {
+        try {
+            Optional<Player> playerToFind = playerRepo.findById(incomingPlayer.getId());
+            if (playerToFind.isPresent()) {
+                playerRepo.deleteById(incomingPlayer.getId());
+                return "Player Removed";
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return "Not Successful";
 
+    }
 }
