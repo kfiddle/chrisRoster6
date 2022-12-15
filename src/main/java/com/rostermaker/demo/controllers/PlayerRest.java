@@ -2,11 +2,13 @@ package com.rostermaker.demo.controllers;
 
 
 import com.rostermaker.demo.enums.Type;
+import com.rostermaker.demo.models.gigOffer.GigOffer;
 import com.rostermaker.demo.models.instrument.Instrument;
 import com.rostermaker.demo.models.player.Player;
 import com.rostermaker.demo.models.player.PlayerBuilder;
 import com.rostermaker.demo.models.player.PlayerCompare;
 import com.rostermaker.demo.models.player.PlayerEditor;
+import com.rostermaker.demo.repos.GigOfferRepo;
 import com.rostermaker.demo.repos.InstrumentRepo;
 import com.rostermaker.demo.repos.PlayerRepo;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,9 @@ public class PlayerRest {
 
     @Resource
     InstrumentRepo instrumentRepo;
+
+    @Resource
+    GigOfferRepo gigOfferRepo;
 
     @RequestMapping("/get-all-players")
     public Collection<Player> getAllPlayers() {
@@ -123,10 +128,16 @@ public class PlayerRest {
     }
 
     @PostMapping("/delete-player")
-    public String deletePlayerFromDB(@RequestBody Player incomingPlayer) throws IOException {
+    public String LieslDeletePlayerFunction(@RequestBody Player incomingPlayer) throws IOException {
         try {
             Optional<Player> playerToFind = playerRepo.findById(incomingPlayer.getId());
             if (playerToFind.isPresent()) {
+                Player playerToDelete = playerToFind.get();
+                if (gigOfferRepo.existsByPlayer(playerToDelete)) {
+                    Collection<GigOffer> offersOfPlayer = gigOfferRepo.findAllByPlayer(playerToDelete);
+                    gigOfferRepo.deleteAll(offersOfPlayer);
+                }
+
                 playerRepo.deleteById(incomingPlayer.getId());
                 return "Player Removed";
             }
@@ -134,6 +145,5 @@ public class PlayerRest {
             error.printStackTrace();
         }
         return "Not Successful";
-
     }
 }

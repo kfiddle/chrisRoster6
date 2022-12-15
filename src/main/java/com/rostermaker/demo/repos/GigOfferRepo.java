@@ -13,5 +13,8 @@ public interface GigOfferRepo extends CrudRepository<GigOffer, Long> {
     Collection<GigOffer> findAllByPlayer(Player player);
 
     List<GigOffer> findAllBy(Sort sort);
+    
+    boolean existsByPlayer(Player player);
 
+    void deleteAllByPlayer(Player playerToDelete);
 }
