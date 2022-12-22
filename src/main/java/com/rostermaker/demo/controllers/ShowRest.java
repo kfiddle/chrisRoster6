@@ -25,7 +25,6 @@ public class ShowRest {
         List<Show> sortedShows = new ArrayList<>((Collection<Show>) showRepo.findAll());
 
         try {
-//            Collections.sort(sortedShows);
             return sortedShows;
 
         } catch (Exception error) {

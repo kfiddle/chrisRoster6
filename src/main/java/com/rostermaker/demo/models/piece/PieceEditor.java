@@ -13,7 +13,8 @@ public class PieceEditor {
         Optional<String> prefixOpt = Optional.ofNullable(incoming.getPrefix());
         Optional<String> libNumberOpt = Optional.ofNullable(incoming.getLibNumber());
         Optional<String> suffixOpt = Optional.ofNullable(incoming.getSuffix());
-        Optional<String> composerNameOpt = Optional.ofNullable(incoming.getComposerName());
+        Optional<String> composerLastOpt = Optional.ofNullable(incoming.getComposerLast());
+        Optional<String> composerFirstOpt = Optional.ofNullable(incoming.getComposerFirst());
         Optional<String> arrangerOpt = Optional.ofNullable(incoming.getArranger());
         Optional<String> titleOpt = Optional.ofNullable(incoming.getTitle());
         Optional<String> publisherOpt = Optional.ofNullable(incoming.getPublisher());
@@ -29,7 +30,8 @@ public class PieceEditor {
         prefixOpt.ifPresent(gotten -> storedPiece.setPrefix(incoming.getPrefix()));
         libNumberOpt.ifPresent(gotten -> storedPiece.setLibNumber(incoming.getLibNumber()));
         suffixOpt.ifPresent(gotten -> storedPiece.setSuffix(incoming.getSuffix()));
-        composerNameOpt.ifPresent(gotten -> storedPiece.setComposerName(incoming.getComposerName()));
+        composerLastOpt.ifPresent(gotten -> storedPiece.setComposerLast(incoming.getComposerLast()));
+        composerFirstOpt.ifPresent(gotten -> storedPiece.setComposerFirst(incoming.getComposerFirst()));
         arrangerOpt.ifPresent(gotten -> storedPiece.setArranger(incoming.getArranger()));
         titleOpt.ifPresent(gotten -> storedPiece.setTitle(incoming.getTitle()));
         publisherOpt.ifPresent(gotten -> storedPiece.setPublisher(incoming.getPublisher()));

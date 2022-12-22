@@ -21,9 +21,6 @@ public class PieceRest {
     @Resource
     PieceRepo pieceRepo;
 
-//    @Resource
-//    ChairRepo chairRepo;
-
     @RequestMapping("/get-all-pieces")
     public Collection<Piece> getAllPerformances() {
         return (Collection<Piece>) pieceRepo.findAll();
@@ -37,7 +34,8 @@ public class PieceRest {
                     .prefix(incoming.getPrefix())
                     .libNumber(incoming.getLibNumber())
                     .suffix(incoming.getSuffix())
-                    .composerName(incoming.getComposerName())
+                    .composerLast(incoming.getComposerLast())
+                    .composerFirst(incoming.getComposerFirst())
                     .arranger(incoming.getArranger())
                     .title(incoming.getTitle())
                     .otherName(incoming.getOtherName())

@@ -8,7 +8,9 @@ public class PieceBuilder {
     public String prefix;
     public String libNumber;
     public String suffix;
-    public String composerName;
+    public String composerLast;
+
+    public String composerFirst;
     public String arranger;
     public String title;
     public String otherName;
@@ -43,11 +45,18 @@ public class PieceBuilder {
         return this;
     }
 
-    public PieceBuilder composerName(String composerName) {
-        Optional<String> composerNameOpt = Optional.ofNullable(composerName);
-        composerNameOpt.ifPresent(gotten -> this.composerName = gotten);
+    public PieceBuilder composerLast(String composerLast) {
+        Optional<String> composerLastOpt = Optional.ofNullable(composerLast);
+        composerLastOpt.ifPresent(gotten -> this.composerLast = gotten);
         return this;
     }
+
+    public PieceBuilder composerFirst(String composerFirst) {
+        Optional<String> composerFirstOpt = Optional.ofNullable(composerFirst);
+        composerFirstOpt.ifPresent(gotten -> this.composerFirst = gotten);
+        return this;
+    }
+
 
     public PieceBuilder arranger(String arranger) {
         Optional<String> arrangerOpt = Optional.ofNullable(arranger);

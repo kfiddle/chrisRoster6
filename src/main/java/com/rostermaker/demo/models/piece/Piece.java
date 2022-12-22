@@ -15,7 +15,8 @@ public class Piece {
     private String prefix;
     private String libNumber;
     private String suffix;
-    private String composerName;
+    private String composerLast;
+    private String composerFirst;
     private String arranger;
     private String title;
     private String otherName;
@@ -32,13 +33,15 @@ public class Piece {
 
     private boolean stringsRequired;
 
-    public Piece() {}
+    public Piece() {
+    }
 
     public Piece(PieceBuilder pieceBuilder) {
         prefix = pieceBuilder.prefix;
         libNumber = pieceBuilder.libNumber;
         suffix = pieceBuilder.suffix;
-        composerName = pieceBuilder.composerName;
+        composerLast = pieceBuilder.composerLast;
+        composerFirst = pieceBuilder.composerFirst;
         arranger = pieceBuilder.arranger;
         title = pieceBuilder.title;
         otherName = pieceBuilder.otherName;
@@ -65,8 +68,12 @@ public class Piece {
         this.suffix = suffix;
     }
 
-    public void setComposerName(String composerName) {
-        this.composerName = composerName;
+    public void setComposerLast(String composerLast) {
+        this.composerLast = composerLast;
+    }
+
+    public void setComposerFirst(String composerFirst) {
+        this.composerFirst = composerFirst;
     }
 
     public void setArranger(String arranger) {
@@ -137,8 +144,12 @@ public class Piece {
         return suffix;
     }
 
-    public String getComposerName() {
-        return composerName;
+    public String getComposerLast() {
+        return composerLast;
+    }
+
+    public String getComposerFirst() {
+        return composerFirst;
     }
 
     public String getArranger() {

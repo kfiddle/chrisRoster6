@@ -66,7 +66,6 @@ public class Populator implements CommandLineRunner {
         String chrisPass = robot.encode("managerPass");
         String troyPass = robot.encode("rookfoot");
 
-
         Player chrisNewlun = new PlayerBuilder().firstNameArea("Orchestra").lastName("Manager").email("manager@Email").password(chrisPass).build();
         Player troy = new PlayerBuilder().firstNameArea("Troy").lastName("Harris").email("troyman7000@gmail.com").password(troyPass).build();
 
@@ -187,22 +186,22 @@ public class Populator implements CommandLineRunner {
                 eriS, ee, jiYoung, cv, kf, hl, wt, tobias, jiyeonY, jenJ, mp, jc, jm, nadineS, bn, jv, kieranH, josephH, tomC, jamesM, mariaP, mikeChen, dianaV,
                 samPetrey, maijaAnstine, chrisBlaha, erikSund));
 
-        pieceRepo.saveAll(Arrays.asList(new PieceBuilder().composerName("Beethoven").title("Symphony 9").duration("65:00").build(),
-                new PieceBuilder().composerName("Sigfúsdóttir").title("Oceans").duration("9:30").build(),
-                new PieceBuilder().composerName("Golijov").title("Sidereus").duration("8:00").build(),
-                new PieceBuilder().composerName("Piazzolla").title("Aconcagua").duration("20:00").build(),
-                new PieceBuilder().composerName("Holst").title("The Planets").duration("51:00").build(),
-                new PieceBuilder().composerName("Strauss").title("Emperor Waltzes").duration("10:00").build(),
-                new PieceBuilder().composerName("Schumann").title("Violin Concerto").duration("33:00").build(),
-                new PieceBuilder().composerName("Brahms").title("Symphony 3").duration("37:00").build(),
-                new PieceBuilder().composerName("Auerbach").title("Icarus").duration("12:00").build(),
-                new PieceBuilder().composerName("Tchaikovsky").title("Piano Concerto No. 1").duration("32:00").build(),
-                new PieceBuilder().composerName("Prokofiev").title("Alexander Nevsky Cantata").duration("36:00").build()));
+        pieceRepo.saveAll(Arrays.asList(new PieceBuilder().composerLast("Beethoven").title("Symphony 9").duration("65:00").build(),
+                new PieceBuilder().composerLast("Sigfúsdóttir").title("Oceans").duration("9:30").build(),
+                new PieceBuilder().composerLast("Golijov").title("Sidereus").duration("8:00").build(),
+                new PieceBuilder().composerLast("Piazzolla").title("Aconcagua").duration("20:00").build(),
+                new PieceBuilder().composerLast("Holst").title("The Planets").duration("51:00").build(),
+                new PieceBuilder().composerLast("Strauss").title("Emperor Waltzes").duration("10:00").build(),
+                new PieceBuilder().composerLast("Schumann").title("Violin Concerto").duration("33:00").build(),
+                new PieceBuilder().composerLast("Brahms").title("Symphony 3").duration("37:00").build(),
+                new PieceBuilder().composerLast("Auerbach").title("Icarus").duration("12:00").build(),
+                new PieceBuilder().composerLast("Tchaikovsky").title("Piano Concerto No. 1").duration("32:00").build(),
+                new PieceBuilder().composerLast("Prokofiev").title("Alexander Nevsky Cantata").duration("36:00").build()));
 
 
-        Piece diamond = new PieceBuilder().composerName("Diamond").title("Symphony 4").duration("16:00").build();
-        Piece poulenc = new PieceBuilder().composerName("Poulenc").title("Concerto for Organ and Orchestra").duration("26:00").build();
-        Piece laMer = new PieceBuilder().composerName("Debussy").title("La Mer").duration("23:00").build();
+        Piece diamond = new PieceBuilder().composerLast("Diamond").title("Symphony 4").duration("16:00").build();
+        Piece poulenc = new PieceBuilder().composerLast("Poulenc").title("Concerto for Organ and Orchestra").duration("26:00").build();
+        Piece laMer = new PieceBuilder().composerLast("Debussy").title("La Mer").duration("23:00").build();
 
         pieceRepo.saveAll(Arrays.asList(diamond, poulenc, laMer));
 

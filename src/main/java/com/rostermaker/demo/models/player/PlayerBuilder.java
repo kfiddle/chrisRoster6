@@ -34,7 +34,6 @@ public class PlayerBuilder {
 
     public PlayerBuilder() {
     }
-
     public PlayerBuilder firstNameArea(String firstNameArea) {
         Optional<String> firstNameOpt = Optional.ofNullable(firstNameArea);
         firstNameOpt.ifPresent(gottenFirst -> this.firstNameArea = gottenFirst);
